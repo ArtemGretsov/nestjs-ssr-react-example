@@ -1,0 +1,12 @@
+version: "3"
+services:
+  postgres:
+    image: postgres:13
+    volumes:
+      - ./database:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=my-system-viewer
+      - POSTGRES_PASSWORD=my-system-viewer
+      - POSTGRES_DB=my-system-viewer
+    ports:
+      - 5432:5432

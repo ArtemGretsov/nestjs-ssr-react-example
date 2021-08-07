@@ -10,7 +10,7 @@ export class AppController {
   @Render('index')
   public showHomePage() {
     return {
-      message: 'Hello NestJS!!!!!!!!!!',
+      message: 'Hello NestJS!',
     };
   }
 }
