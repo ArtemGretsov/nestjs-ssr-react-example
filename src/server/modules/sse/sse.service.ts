@@ -21,12 +21,18 @@ export class SseService {
       'Cache-Control': 'no-cache'
     });
 
-    this.eventEmitter.on(this.eventSeeName, ({ data, event }) => {
+    const listener = ({ data, event }: { data: any, event: string }): void => {
       this.messageId = this.messageId + 1;
       res.write(`data:${JSON.stringify({ data })}\n`);
       res.write(`event:${event}\n`);
       res.write(`id:${this.messageId}\n`);
       res.write('\n');
+    };
+
+    this.eventEmitter.on(this.eventSeeName, listener);
+
+    res.on('close', () => {
+      this.eventEmitter.removeListener(this.eventSeeName, listener);
     })
   }
 }

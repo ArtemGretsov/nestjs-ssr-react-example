@@ -4,6 +4,7 @@ import { TemperatureRepository } from '../../repositories/Temperature';
 import { TemperatureAddingRequestDto } from './dto/temperatureAdding.dto';
 import { SseService } from '../sse/sse.service';
 import { SseNameEnum } from '../../../enums/sse-name.enum';
+import { Temperature } from '../../entities/Temperature';
 
 const COUNT_LAST_ITEMS: number = config.get('temperatures.count_last_items');
 
@@ -16,16 +17,16 @@ export class TemperatureService {
   ) { }
 
   public async save({ computerCode, value }: TemperatureAddingRequestDto): Promise<void> {
-    await this.temperatureRepository.createAndSave({
+    const temperature = await this.temperatureRepository.createAndSave({
       value,
       computerCode,
     });
-    this.sseService.send(SseNameEnum.temperatures, value);
+    this.sseService.send(SseNameEnum.temperatures, temperature);
   }
 
-  public async getLast(currencyCode: string) {
+  public async getLast(computerCode: string): Promise<Temperature[]> {
     return this.temperatureRepository.getLastComputerTemperatures(
-      currencyCode,
+      computerCode,
       COUNT_LAST_ITEMS,
     )
   }

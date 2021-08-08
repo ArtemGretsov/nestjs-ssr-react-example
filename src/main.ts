@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import register from '@react-ssr/nestjs-express/register';
-import { AppModule } from './app.module';
-import {DocumentBuilder, SwaggerModule} from "@nestjs/swagger";
+import { AppModule } from './server/app.module';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 (async () => {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);

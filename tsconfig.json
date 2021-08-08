@@ -1,7 +1,5 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
     "moduleResolution": "node",
     "jsx": "preserve",
     "lib": [
@@ -11,17 +9,29 @@
     ],
     "strict": true,
     "allowJs": false,
-    "skipLibCheck": true,
     "esModuleInterop": true,
     "isolatedModules": false,
     "resolveJsonModule": true,
+    "strictPropertyInitialization": false,
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictPropertyInitialization": false,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
   },
   "exclude": [
     "node_modules",
     "dist",
     "ssr.config.js"
+  ],
+  "include": [
+    "src"
   ]
 }

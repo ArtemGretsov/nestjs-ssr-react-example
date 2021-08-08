@@ -12,5 +12,6 @@ import { TemperatureController } from './temperature.controller';
   ],
   providers: [TemperatureService],
   controllers: [TemperatureController],
+  exports: [TemperatureService]
 })
 export class TemperatureModule {}
