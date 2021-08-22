@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import config from 'config';
 import { SseService } from '../sse/sse.service';
 import { SseNameEnum } from '../../enums/sse-name.enum';
-import { RamRepository } from '../../database/repositories/ram.repository';
+import { RamRepository } from '../../database/repositories/ram';
 import { RamEntity } from '../../database/entities/ram.entity';
 
 const COUNT_LAST_ITEMS: number = config.get('ram.count_last_items');
