@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import config from 'config';
-import { TemperatureRepository } from '../../database/repositories/temperature';
+import { TemperatureRepository } from '../../database/repositories/temperature.repository';
 import { SseService } from '../sse/sse.service';
 import { SseNameEnum } from '../../enums/sse-name.enum';
 import { TemperatureEntity } from '../../database/entities/temperature.entity';

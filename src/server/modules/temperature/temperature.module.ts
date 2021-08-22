@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SseModule } from '../sse/sse.module';
-import { TemperatureRepository } from '../../database/repositories/temperature';
+import { TemperatureRepository } from '../../database/repositories/temperature.repository';
 import { TemperatureService } from './temperature.service';
 import { TemperatureController } from './temperature.controller';
 

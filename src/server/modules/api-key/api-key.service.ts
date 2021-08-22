@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ApiKeyRepository } from '../../database/repositories/api-key.repository';
-import {FindConditions} from "typeorm";
-import {ApiKeyEntity} from "../../database/entities/api-key.entity";
+import { FindConditions } from 'typeorm';
+import { ApiKeyEntity } from '../../database/entities/api-key.entity';
 
 @Injectable()
 export class ApiKeyService {
