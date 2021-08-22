@@ -5,6 +5,8 @@ import useEventSource from '../../../../hooks/use-event-source';
 import { TemperatureTable } from "./components/table";
 import { ITemperature } from '../../interfaces/temperature.interface';
 
+const COUNT_LAST_ITEMS: number = 5;
+
 interface IProps {
   data: ITemperature[];
 }
@@ -16,10 +18,12 @@ export const Temperature: React.FC<IProps> = ({ data}) => {
   temperaturesRef.current = stateTemperatures;
 
   useEventSource(SseNameEnum.temperatures, (temperature: ITemperature) => {
-    setStateTemperatures([
-      temperature,
-      ...temperaturesRef.current.slice(0, temperaturesRef.current.length - 1),
-    ]);
+    if (temperaturesRef.current.length === COUNT_LAST_ITEMS) {
+      setStateTemperatures([
+        temperature,
+        ...temperaturesRef.current.slice(0, temperaturesRef.current.length - 1),
+      ]);
+    }
     setLastUpdatedTime(Date.now);
   });
 
