@@ -25,7 +25,7 @@ export const Temperature: React.FC<IProps> = ({ data}) => {
 
   return (
     <Card
-      title="Processor TemperatureEntity"
+      title="Processor Temperature"
       valueUnit="C&deg;"
       value={stateTemperatures[0]?.value}
       criticalValue={80}
