@@ -18,12 +18,13 @@ export const Temperature: React.FC<IProps> = ({ data}) => {
   temperaturesRef.current = stateTemperatures;
 
   useEventSource(SseNameEnum.temperatures, (temperature: ITemperature) => {
-    if (temperaturesRef.current.length === COUNT_LAST_ITEMS) {
-      setStateTemperatures([
-        temperature,
-        ...temperaturesRef.current.slice(0, temperaturesRef.current.length - 1),
-      ]);
-    }
+    setStateTemperatures([
+      temperature,
+      ...(temperaturesRef.current.length === COUNT_LAST_ITEMS
+          ? temperaturesRef.current.slice(0, temperaturesRef.current.length - 1)
+          : temperaturesRef.current
+      ),
+    ]);
     setLastUpdatedTime(Date.now);
   });
 
