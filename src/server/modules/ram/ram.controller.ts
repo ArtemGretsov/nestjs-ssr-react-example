@@ -3,6 +3,7 @@ import {ApiOkResponse, ApiTags} from '@nestjs/swagger';
 import { RamService } from './ram.service';
 import { LastRamDto } from './dto/last-ram.dto';
 import { RamAddingRequestDto } from './dto/ram-adding.dto';
+import { ApiKeysGuard } from '../../common/guards/api-keys-guard';
 
 @Controller('ram')
 @ApiTags('ram')
@@ -11,6 +12,7 @@ export class RamController {
     private readonly ramService: RamService,
   ) { }
 
+  @ApiKeysGuard()
   @Post()
   public async save(
     @Body() body: RamAddingRequestDto,

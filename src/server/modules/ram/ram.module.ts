@@ -3,7 +3,7 @@ import { RamService } from './ram.service';
 import { RamController } from './ram.controller';
 import { SseModule } from '../sse/sse.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { RamRepository } from '../../database/repositories/Ram';
+import { RamRepository } from '../../database/repositories/ram.repository';
 
 @Module({
   imports: [

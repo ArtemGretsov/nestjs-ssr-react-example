@@ -3,6 +3,7 @@ import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { TemperatureService } from './temperature.service';
 import { TemperatureAddingRequestDto } from './dto/temperature-adding.dto';
 import { LastTemperatureResponseDto } from './dto/last-temperatures.dto';
+import { ApiKeysGuard } from '../../common/guards/api-keys-guard';
 
 @Controller('temperatures')
 @ApiTags('temperatures')
@@ -11,6 +12,7 @@ export class TemperatureController {
     private readonly temperatureService: TemperatureService,
   ) { }
 
+  @ApiKeysGuard()
   @Post()
   public async save(
     @Body() body: TemperatureAddingRequestDto,

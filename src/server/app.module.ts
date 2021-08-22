@@ -6,6 +6,7 @@ import { TemperatureModule } from './modules/temperature/temperature.module';
 import { SseModule } from './modules/sse/sse.module';
 import { SsrModule } from './modules/ssr/ssr.module';
 import { RamModule } from './modules/ram/ram.module';
+import { ApiKeyModule } from './modules/api-key/api-key.module';
 
 const TYPEORM_CONFIG: object = config.get('typeorm');
 
@@ -17,12 +18,15 @@ const TYPEORM_CONFIG: object = config.get('typeorm');
         entitiesDir: __dirname + '/database/entities',
         migrationsDir: __dirname + '/database/migration',
       },
-      entities: [__dirname + '/database/entities/*{.ts,.js}'],
+      entities: [
+        __dirname + '/database/entities/*.entity{.ts,.js}',
+      ],
       migrations: [__dirname + '/database/migration/*{.ts,.js}'],
       namingStrategy: new SnakeNamingStrategy(),
       subscribers: [__dirname + '/database/subscriber/*{.ts,.js}'],
       synchronize: true,
     }),
+    ApiKeyModule,
     SseModule,
     SsrModule,
     TemperatureModule,

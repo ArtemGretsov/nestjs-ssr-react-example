@@ -46,7 +46,7 @@ createApiKey = async () => {
     await query(`INSERT INTO api_keys(id, api_key, secret_key, salt, computer_id) values(DEFAULT, '${apiKey}', '${secretKey}', '${salt}', ${computer.rows[0].id})`)
     console.log('Copy keys! \n', {
       apiKey,
-      secretKey,
+      secretKey: rawSecretKey,
     });
   } catch (e) {
     console.log('oops! Something went wrong!', e);

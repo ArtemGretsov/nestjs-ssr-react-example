@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 import config from 'config';
 import { SseService } from '../sse/sse.service';
 import { SseNameEnum } from '../../enums/sse-name.enum';
-import { RamRepository } from '../../database/repositories/Ram';
-import { Ram } from '../../database/entities/Ram';
+import { RamRepository } from '../../database/repositories/ram.repository';
+import { RamEntity } from '../../database/entities/ram.entity';
 
 const COUNT_LAST_ITEMS: number = config.get('ram.count_last_items');
 
@@ -20,7 +20,7 @@ export class RamService {
      computerCode,
      value,
      total,
-    }: Pick<Ram, 'value' | 'total'> & { computerCode: string }
+    }: Pick<RamEntity, 'value' | 'total'> & { computerCode: string }
   ): Promise<void> {
     const ram = await this.ramRepository.createAndSave({
       value,
@@ -30,7 +30,7 @@ export class RamService {
     this.sseService.send(`${computerCode}/${SseNameEnum.ram}`, ram);
   }
 
-  public async getLast(computerCode: string): Promise<Ram[]> {
+  public async getLast(computerCode: string): Promise<RamEntity[]> {
     return this.ramRepository.getLastComputerRam(
       computerCode,
       COUNT_LAST_ITEMS,
