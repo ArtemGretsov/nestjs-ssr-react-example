@@ -1,10 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import config from 'config';
-import { TemperatureRepository } from '../../repositories/Temperature';
-import { TemperatureAddingRequestDto } from './dto/temperatureAdding.dto';
+import { TemperatureRepository } from '../../database/repositories/Temperature';
 import { SseService } from '../sse/sse.service';
-import { SseNameEnum } from '../../../enums/sse-name.enum';
-import { Temperature } from '../../entities/Temperature';
+import { SseNameEnum } from '../../enums/sse-name.enum';
+import { Temperature } from '../../database/entities/Temperature';
 
 const COUNT_LAST_ITEMS: number = config.get('temperatures.count_last_items');
 
@@ -16,7 +15,7 @@ export class TemperatureService {
     private readonly sseService: SseService,
   ) { }
 
-  public async save({ computerCode, value }: TemperatureAddingRequestDto): Promise<void> {
+  public async save({ computerCode, value }: Pick<Temperature, 'value'> & { computerCode: string }): Promise<void> {
     const temperature = await this.temperatureRepository.createAndSave({
       value,
       computerCode,

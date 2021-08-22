@@ -7,7 +7,7 @@ export class SsrService {
     private readonly temperatureService: TemperatureService,
   ) { }
 
-  async getHomeData() {
+  public async getHomeData() {
     const [
       temperatures,
     ] = await Promise.all([

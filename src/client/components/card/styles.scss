@@ -1,0 +1,42 @@
+@import './../../styles/colors';
+
+.card {
+  &.card {
+    background-color: $content-card-background;
+    width: 370px
+  }
+
+  &__current {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+    padding: 10px !important;
+    font-size: 35px !important;
+
+    &_blinker {
+      text-decoration: blink;
+      -webkit-animation-name: blinker;
+      -webkit-animation-duration: 0.2s;
+      -webkit-animation-iteration-count: 6;
+      -webkit-animation-timing-function: ease-in-out;
+      -webkit-animation-direction: alternate;
+    }
+  }
+
+  @-webkit-keyframes blinker {
+    from {opacity: 1.0;}
+    to {opacity: 0.0;}
+  }
+
+  &__title {
+    background-color: $normal-title-card-background !important;
+
+    &_critical {
+      background-color: $critical-title-card-background !important;
+    }
+  }
+
+  &__current-value {
+    margin: 0 4px 4px 0 !important;
+  }
+}

@@ -8,6 +8,9 @@ module.exports = {
     database: 'my-system-viewer',
   },
   temperatures: {
-    count_last_items: 10,
+    count_last_items: 5,
+  },
+  ram: {
+    count_last_items: 5,
   }
 }

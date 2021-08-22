@@ -1,10 +1,11 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
-import { ApiOkResponse } from '@nestjs/swagger';
+import { ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { TemperatureService } from './temperature.service';
-import { TemperatureAddingRequestDto } from './dto/temperatureAdding.dto';
-import { LastTemperatureResponseDto } from './dto/lastTemperatures.dto';
+import { TemperatureAddingRequestDto } from './dto/temperature-adding.dto';
+import { LastTemperatureResponseDto } from './dto/last-temperatures.dto';
 
 @Controller('temperatures')
+@ApiTags('temperatures')
 export class TemperatureController {
   constructor(
     private readonly temperatureService: TemperatureService,

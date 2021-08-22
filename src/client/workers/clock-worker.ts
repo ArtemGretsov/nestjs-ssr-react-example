@@ -1,0 +1,1 @@
+export const worker = new Worker('static/js/clock.worker.js');

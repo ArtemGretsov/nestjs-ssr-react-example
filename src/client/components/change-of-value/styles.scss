@@ -1,0 +1,23 @@
+@import '../../styles/colors';
+
+.change-of-value {
+  display: flex;
+  justify-content: center;
+
+  &__icon {
+    &.icon {
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &_down {
+      color: $normal-diff-icon-color;
+    }
+
+    &_up {
+      color: $critical-diff-icon-color;
+    }
+  }
+}
